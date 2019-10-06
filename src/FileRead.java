@@ -29,11 +29,14 @@ public class FileRead implements Runnable {
         String[] time_seperated = time.split(":");
         Integer seconds = Integer.parseInt(time_seperated[2]) + (((Integer.parseInt(time_seperated[0]))*60) + (Integer.parseInt(time_seperated[1])))* 60 ;
         System.out.println("File time : "+ time);
+
         String now = java.time.LocalTime.now().toString();
         System.out.println("Now : " + now);
+
         String[] now_s = now.split(":");
         now_s[2] = (now_s[2].split("\\."))[0];
         Integer seconds_now = Integer.parseInt(now_s[2]) + (((Integer.parseInt(now_s[0]))*60) + (Integer.parseInt(now_s[1])))*60;
+
         return seconds_now - seconds < 5;
     }
 
