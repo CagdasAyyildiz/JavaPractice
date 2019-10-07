@@ -17,14 +17,14 @@ public class Screenshot implements Runnable {
 
             try {
                 if (image != null) {
-                    ImageIO.write(image, "png", new File("/c:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\ss.png"));
+                    ImageIO.write(image, "png", new File(new File(".").getCanonicalPath()+ "\\ss.png"));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
             try {
-                Thread.sleep(5000);
+                Thread.sleep(10000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
