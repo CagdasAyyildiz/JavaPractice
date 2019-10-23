@@ -9,7 +9,7 @@ public class FileRead implements Runnable {
     @Override
     public void run() {
         Random rand = new Random();
-        int wait_sec = 5000+rand.nextInt(10000);
+        int wait_sec = Constants.MIN_TIME+rand.nextInt(Constants.TIME_INTERVAL);
 
         try {
             Thread.sleep(wait_sec);
@@ -24,7 +24,7 @@ public class FileRead implements Runnable {
             e.printStackTrace();
         }
 
-        SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat(Constants.DATE_PATTERN);
 
         String date = null;
         if (file != null)
@@ -58,7 +58,7 @@ public class FileRead implements Runnable {
 
     private static boolean validateDate(String date) {
         String[] date_separated = date.split("-");
-        DateTimeFormatter date_today_formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");
+        DateTimeFormatter date_today_formatter = DateTimeFormatter.ofPattern(Constants.DATE_PATTERN);
 
         LocalDateTime now = LocalDateTime.now();
         String date_today = date_today_formatter.format(now);
